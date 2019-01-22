@@ -8,7 +8,8 @@ products.each do |product|
       url: url,
       page_type: 'products',
       vars: {
-        category: page['vars']['category']
+        category: page['vars']['category'],
+        url: url
       }
     }
 end
