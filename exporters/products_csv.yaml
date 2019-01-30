@@ -17,8 +17,6 @@ fields:
    path: "asin"
  - header: "description"
    path: "description"
- - header: "image"
-   path: "image"
  - header: "available"
    path: "available"
  - header: "price"

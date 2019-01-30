@@ -51,9 +51,6 @@ nokogiri.css('#feature-bullets li').each do |li|
 end
 product['description'] = description.strip
 
-#extract image
-product['image'] = nokogiri.at_css('#main-image-container img')['src']
-
 # specify the collection where this record will be stored
 product['_collection'] = "products"
 
