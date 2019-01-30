@@ -3,6 +3,13 @@ nokogiri = Nokogiri.HTML(content)
 # initialize an empty hash
 product = {}
 
+#save the url
+product['url'] = page['vars']['url']
+
+#extract the asin
+canonical_link = nokogiri.css('link').find{|link| link['rel'].strip == 'canonical' }
+product['asin'] = canonical_link['href'].split("/").last
+
 #extract title
 product['title'] = nokogiri.at_css('#productTitle').text.strip
 
@@ -13,7 +20,6 @@ if seller_node
 else
   product['author'] = nokogiri.css('a.contributorNameID').text.strip
 end
-
 
 #extract number of reviews
 reviews_node = nokogiri.at_css('span#acrCustomerReviewText')
