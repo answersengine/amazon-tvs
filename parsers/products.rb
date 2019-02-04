@@ -32,7 +32,10 @@ stars_num = rating_node ? rating_node.text.strip.split(' ').first : nil
 product['rating'] = stars_num =~ /^[0-9.]*$/ ? stars_num.to_f : nil
 
 #extract price
-product['price'] = nokogiri.at_css('#price_inside_buybox', '#priceblock_ourprice', '#priceblock_dealprice', '.offer-price').text.strip.gsub(/[\$,]/,'').to_f
+price_node = nokogiri.at_css('#price_inside_buybox', '#priceblock_ourprice', '#priceblock_dealprice', '.offer-price')
+if price_node
+  product['price'] = price_node.text.strip.gsub(/[\$,]/,'').to_f
+end
 
 #extract availability
 availability_node = nokogiri.at_css('#availability')
