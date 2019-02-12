@@ -13,12 +13,10 @@ product['asin'] = canonical_link['href'].split("/").last
 #extract title
 product['title'] = nokogiri.at_css('#productTitle').text.strip
 
-#extract seller/author
+#extract seller
 seller_node = nokogiri.at_css('a#bylineInfo')
 if seller_node
   product['seller'] = seller_node.text.strip
-else
-  product['author'] = nokogiri.css('a.contributorNameID').text.strip
 end
 
 #extract number of reviews
