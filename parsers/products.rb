@@ -6,6 +6,9 @@ product = {}
 #save the url
 product['url'] = page['vars']['url']
 
+#save the category
+product['category'] = page['vars']['category']
+
 #extract the asin
 canonical_link = nokogiri.css('link').find{|link| link['rel'].strip == 'canonical' }
 product['asin'] = canonical_link['href'].split("/").last
